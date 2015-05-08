@@ -19,7 +19,7 @@ class Stylist
   end
 
   define_method(:save) do
-    returns = DB.exec("INSERT INTO stylists (name) VALUES ('#{self.name()}') RETURNING id")
+    returns = DB.exec("INSERT INTO stylists (name) VALUES ('#{self.name()}') RETURNING id;")
     @id = returns.first().fetch('id').to_i
   end
 
@@ -28,8 +28,12 @@ class Stylist
   end
 
   define_singleton_method(:find) do |identification|
-    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{identification}")
+    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{identification};")
     name = stylist.first().fetch('name')
     Stylist.new({:name => name, :id => identification})
+  end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
   end
 end
