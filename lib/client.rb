@@ -42,4 +42,14 @@ class Client
     @id = self.id()
     DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id}")
   end
+
+  define_method(:stylist) do
+    client_data = DB.exec("SELECT * FROM clients WHERE id = #{self.id()};")
+    stylist_id = client_data.first().fetch("stylist_id")
+    if stylist_id != nil
+      Stylist.find(stylist_id).name()
+    else
+      "No stylest selected."
+    end
+  end
 end

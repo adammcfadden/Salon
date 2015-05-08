@@ -36,7 +36,15 @@ post('/new/client') do
   client = Client.new({:name => params.fetch('client_entry'), :id => nil})
   client.save()
   @clients = Client.all()
-  @stylists = Stylist.all()
   @selector = nil
   erb(:index)
+end
+
+get('client/:id') do
+  @id = params.fetch('id').to_i()
+  @client = Client.find(@id).name()
+  @stylist = @client.stylist()
+  @stylists = Stylist.all()
+  @selector = nil
+  erb(:client)
 end
