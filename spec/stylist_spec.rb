@@ -1,6 +1,11 @@
+require 'spec_helper'
+
 describe (Stylist) do
   describe("#name") do
-
+    it('will return the name of a stylist') do
+      test_stylist = Stylist.new({:name => 'suzzie', :id => nil})
+      expect(test_client.name()).to(eq('sally'))
+    end
   end
 
 #   describe("#id") do
