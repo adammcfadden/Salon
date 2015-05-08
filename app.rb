@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require './lib/client'
 require './lib/stylist'
 require 'pg'
+require 'pry'
 also_reload './lib/*/**.rb'
 
 
@@ -77,8 +78,10 @@ patch('/add/stylist/:id') do
   @id = params.fetch('id').to_i()
   @client = Client.find(@id)
   @name = @client.name()
-  stylist = @client.stylist()
-  stylist.update({:client_ids => [params.fetch('stylist_selector')]})
-  @stylist = stylist.name()
+  @stylist_id = params.fetch('stylist_selector').to_i()
+  stylist = Stylist.find(@stylist_id)
+  stylist.update({:client_ids => [@id]})
+  @stylist = @client.stylist().name()
   @stylists = Stylist.all()
+  erb(:client)
 end

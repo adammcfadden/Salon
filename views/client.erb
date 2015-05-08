@@ -1,7 +1,11 @@
 <h1><%= @name %></h1>
 <br>
-<h3>Current Stylist: <%= @stylist %></a></h3>
+<% if @stylist != nil %>
+  <h3>Current Stylist: <%= @stylist %></h3>
+<% else %>
+  <h3>Current Stylist: None selected</h3>
 <br>
+<% end %>
 <div class="options_bar">
   <form class="options" action="/<%= @id %>/edit" method="get">
     <button class="btn btn-danger" type="submit" id="edit_client" name="edit_client">Edit Name</button>
@@ -31,8 +35,8 @@
     <input type="hidden" name="_method" value="patch">
     <label for="stylist_selector">Select your stylist</label>
     <select id="stylist_selector" name="stylist_selector" class="form-control">
-      <% @stylists.each() do |stylist| %>
-        <option value=<%=stylist.name() %>><%= stylist.name() %></option>
+      <% @stylists.each() do |object| %>
+        <option value=<%= object.id() %>><%= object.name() %></option>
       <% end %>
     </select>
     <br>
