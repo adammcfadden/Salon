@@ -7,7 +7,7 @@ describe (Stylist) do
       expect(test_stylist.name()).to(eq('scruffy'))
     end
   end
-  
+
   describe(".all") do
     it('will return an array of all stylists objects in the database') do
       expect(Stylist.all()).to(eq([]))
@@ -18,7 +18,7 @@ describe (Stylist) do
     it('will return the id of a stylist') do
       test_stylist = Stylist.new({:name => 'bender', :id => nil})
       test_stylist.save()
-      expect(test_stylist.id()).to(be_an_instane_of(fixnum))
+      expect(test_stylist.id()).to(be_an_instance_of(Fixnum))
     end
   end
 
@@ -29,6 +29,15 @@ describe (Stylist) do
       expect(Stylist.all()).to(eq([test_stylist]))
     end
   end
+
+  describe('#==') do
+    it('makes the == operator true if names are the same') do
+      test_stylist1 = Stylist.new({:name => 'amy', :id => nil})
+      test_stylist2 = Stylist.new({:name => 'amy', :id => nil})
+      expect(test_stylist1).to(eq(test_stylist2))
+    end
+  end
+
 #
 #   describe(".find") do
 #
