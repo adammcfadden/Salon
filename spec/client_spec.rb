@@ -73,7 +73,7 @@ describe(Client) do
       test_client = Client.new(:name => 'ron', :id => nil)
       test_client.save()
       test_stylist.update({:client_ids => [test_client.id()]})
-      expect(test_client.stylist()).to(eq('zoidberg'))
+      expect(test_client.stylist()).to(eq(test_stylist))
     end
   end
 end

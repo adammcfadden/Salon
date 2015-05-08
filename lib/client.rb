@@ -47,7 +47,7 @@ class Client
     client_data = DB.exec("SELECT * FROM clients WHERE id = #{self.id()};")
     stylist_id = client_data.first().fetch("stylist_id")
     if stylist_id != nil
-      Stylist.find(stylist_id).name()
+      Stylist.find(stylist_id)
     else
       "No stylest selected."
     end

@@ -18,3 +18,6 @@ describe('The add new path', {:type => :feature}) do
     expect(page).to have_content('Leela')
   end
 end
+
+# describe('The client path', {:type => :feature}) do
+#   it('will go to a client page')

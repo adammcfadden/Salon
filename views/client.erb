@@ -1,0 +1,42 @@
+<h1><%= @name %></h1>
+<br>
+<h3>Current Stylist: <%= @stylist %></a></h3>
+<br>
+<div class="options_bar">
+  <form class="options" action="/<%= @id %>/edit" method="get">
+    <button class="btn btn-danger" type="submit" id="edit_client" name="edit_client">Edit Name</button>
+  </form>
+  <form class="options" action="/<%= @id %>/add" method="get">
+    <button class="btn btn-danger" type="submit" id="add_stylist_client" name="add_stylist_client">Add Stylist</button>
+  </form>
+  <form class="options" action="/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn btn-warning" type="submit" id="delete_client" name="delete_client">Delete Client</button>
+  </form>
+</div>
+<% if @selector == 'edit' %>
+<div class="form-group">
+  <form class="" action="/edit/client/<%= @id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="client_edit"></label>
+    <input required type="text" name="client_edit" id="client_edit" class="form-control">
+    <br>
+    <button class="btn btn-danger" type="submit" name="client_edit_submit" id="client_edit_submit">Submit Edit</button>
+  </form>
+</div>
+<% end %>
+<% if @selector == 'add' %>
+<div class="form-group">
+  <form action="/add/stylist/<%= @id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="stylist_selector">Select your stylist</label>
+    <select id="stylist_selector" name="stylist_selector" class="form-control">
+      <% @stylists.each() do |stylist| %>
+        <option value=<%=stylist.name() %>><%= stylist.name() %></option>
+      <% end %>
+    </select>
+    <br>
+    <button class="btn btn-danger" type="submit" name="client_stylist_submit" id="client_stylist_submit">Add Stylist</button>
+  </form>
+</div>
+<% end %>
