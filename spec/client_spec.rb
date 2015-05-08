@@ -3,8 +3,8 @@ require 'spec_helper'
 describe(Client) do
   describe('#name') do
     it('will return the name of a client') do
-      test_client = Client.new({:name => 'sally', :id => nil})
-      expect(test_client.name()).to(eq('sally'))
+      test_client = Client.new({:name => 'hermes', :id => nil})
+      expect(test_client.name()).to(eq('hermes'))
     end
   end
   # describe('#id') do
