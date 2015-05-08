@@ -56,8 +56,13 @@ describe (Stylist) do
       expect(Stylist.all()).to(eq([]))
     end
   end
-#
-#   describe("#update") do
-#
-#   end
+
+  describe("#update") do
+    it('will allow you to update a stylist object in the database') do
+      test_stylist1 = Stylist.new(:name => 'calculon', :id => nil)
+      test_stylist1.save()
+      test_stylist1.update({:name => 'donbot'})
+      expect(test_stylist1.name()).to(eq('donbot'))
+    end
+  end
 end
