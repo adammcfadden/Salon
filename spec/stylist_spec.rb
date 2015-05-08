@@ -38,10 +38,16 @@ describe (Stylist) do
     end
   end
 
-#
-#   describe(".find") do
-#
-#   end
+  describe(".find") do
+    it('will return a stylist object associated with the given id') do
+      test_stylist1 = Stylist.new({:name => 'fry', :id => nil})
+      test_stylist1.save()
+      test_stylist2 = Stylist.new({:name => 'hubert', :id => nil})
+      test_stylist2.save()
+      expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
+    end
+  end
+
 #
 #   describe("#delete") do
 #
