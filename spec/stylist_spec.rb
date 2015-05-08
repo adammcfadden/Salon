@@ -64,5 +64,24 @@ describe (Stylist) do
       test_stylist1.update({:name => 'donbot'})
       expect(test_stylist1.name()).to(eq('donbot'))
     end
+    it('will allow you to add client ID to a stylist database object') do
+      test_stylist = Stylist.new(:name => 'clamps', :id => nil)
+      test_stylist.save()
+      test_client = Client.new(:name => 'conway', :id => nil)
+      test_client.save()
+      test_stylist.update({:client_ids => [test_client.id()]})
+      expect(test_stylist.clients()).to(eq([test_client]))
+    end
+  end
+
+  describe("#clients") do
+    it('will allow you to see all client objects associated with a stylist') do
+      test_stylist = Stylist.new(:name => 'zoidberg', :id => nil)
+      test_stylist.save()
+      test_client = Client.new(:name => 'ron', :id => nil)
+      test_client.save()
+      test_stylist.update({:client_ids => [test_client.id()]})
+      expect(test_stylist.clients()).to(eq([test_client]))
+    end
   end
 end
