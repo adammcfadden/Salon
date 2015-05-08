@@ -1,0 +1,54 @@
+<div id="wrapper">
+  <a href="/"><div class="header"><h1>Hair Salon management system</h1></div></a>
+  <br>
+  <div id="stylists">
+    <h3>Stylists</h3>
+    <br>
+    <% if @stylists.any? %>
+      <ul>
+        <% @stylists.each() do |stylist| %>
+          <li><a href="/stylist/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <br>
+    <form id="add_stylist" action="/index/new/stylist" method="get">
+      <button class="btn btn-danger" type="submit" id="add_stylist" name="add_stylist">Add A New Stylist</button>
+    </form>
+    <% if @selector == 'stylist' %>
+    <div class="form-group">
+      <form class="" action="/new/stylist" method="post">
+        <label for="stylist_entry"></label>
+        <input required type="text" name="stylist_entry" id="stylist_entry" class="form-control">
+        <br>
+        <button class="btn btn-danger" type="submit" name="stylist_submit" id="stylist_submit">Submit Stylist</button>
+      </form>
+    </div>
+    <% end %>
+  </div>
+  <div id="clients">
+    <h3>Clients</h3>
+    <br>
+    <% if @clients.any? %>
+      <ul>
+        <% @clients.each() do |client| %>
+          <li><a href="/client/<%= client.id() %>"><%= client.name() %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <br>
+    <form id="add_client" action="/index/new/client" method="get">
+      <button class="btn btn-danger" type="submit" id="add_client" name="add_client">Add A New Client</button>
+    </form>
+    <% if @selector == 'client' %>
+    <div class="form-group">
+      <form class="" action="/new/client" method="post">
+        <label for="client_entry"></label>
+        <input required type="text" name="client_entry" id="client_entry" class="form-control">
+        <br>
+        <button class="btn btn-danger" type="submit" name="client_submit" id="client_submit">Submit Client</button>
+      </form>
+    </div>
+    <% end %>
+  </div>
+</div>
