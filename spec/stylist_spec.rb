@@ -4,7 +4,7 @@ describe (Stylist) do
   describe("#name") do
     it('will return the name of a stylist') do
       test_stylist = Stylist.new({:name => 'suzzie', :id => nil})
-      expect(test_client.name()).to(eq('sally'))
+      expect(test_stylist.name()).to(eq('suzzie'))
     end
   end
 
