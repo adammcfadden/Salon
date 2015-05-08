@@ -15,4 +15,8 @@ RSpec.configure do |config|
   end
 end
 
+Capybara.add_selector(:name) do
+  xpath { |name| XPath.descendant[XPath.attr(:name).contains(name)] }
+end
+
 set(:show_exceptions, false)

@@ -13,7 +13,7 @@
   <form class="options" action="/<%= @id %>/add" method="get">
     <button class="btn btn-danger" type="submit" id="add_stylist_client" name="add_stylist_client">Add Stylist</button>
   </form>
-  <form class="options" action="/delete" method="post">
+  <form class="options" action="/client/<%= @id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
     <button class="btn btn-warning" type="submit" id="delete_client" name="delete_client">Delete Client</button>
   </form>
