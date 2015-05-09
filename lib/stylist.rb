@@ -27,10 +27,10 @@ class Stylist
     self.name() == other.name()
   end
 
-  define_singleton_method(:find) do |identification|
-    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{identification};")
+  define_singleton_method(:find) do |input|
+    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{input};")
     name = stylist.first().fetch('name')
-    Stylist.new({:name => name, :id => identification})
+    Stylist.new({:name => name, :id => input})
   end
 
   define_method(:delete) do

@@ -32,7 +32,7 @@
     <% if @clients.any? %>
       <ul>
         <% @clients.each() do |client| %>
-          <li><a href="/client/<%= client.id() %>"><%= client.name() %></a></li>
+          <li><a href="/<%= client.name() %>/<%= client.id() %>"><%= client.name() %></a></li>
         <% end %>
       </ul>
     <% end %>

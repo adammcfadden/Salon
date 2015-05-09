@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'launchy'
 Capybara.app = Sinatra::Application
 
 
@@ -24,7 +25,7 @@ describe('The client path', {:type => :feature}) do
     visit('/index/new/client')
     fill_in('client_entry', :with => 'Leela')
     click_button('client_submit')
-    click_link('Leela')
+    click_on('Leela')
     click_button('delete_client')
     expect(page).to_not have_content('Leela')
   end

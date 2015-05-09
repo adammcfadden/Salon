@@ -42,7 +42,7 @@ post('/new/client') do
   erb(:index)
 end
 
-get('/client/:id') do
+get('/:client/:id') do
   @id = params.fetch('id').to_i()
   @client = Client.find(@id)
   @name = @client.name()
